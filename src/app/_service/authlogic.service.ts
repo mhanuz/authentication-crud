@@ -6,7 +6,7 @@ import { LoginRequest } from "../_models/auth.interface";
     providedIn:'root'
 })
 export class AuththenticationLogicService {
-    private userSubject: BehaviorSubject<LoginRequest | null>;
+    public userSubject: BehaviorSubject<LoginRequest | null>;
     public user$: Observable<LoginRequest | null>;
     public isLogoutSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 

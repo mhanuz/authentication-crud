@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 import { AuthenticationService } from '../_service/authentication.service';
 import { LoginForm } from './loginForm.types';
@@ -13,14 +14,16 @@ import { LoginForm } from './loginForm.types';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup<LoginForm>;
-  constructor(private authenticationService: AuthenticationService){
+  constructor(private authenticationService: AuthenticationService,
+    private router: Router
+    ){
     
   }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup<LoginForm>({
-        userName: new FormControl('', Validators.required),
-        password: new FormControl('', Validators.required),
+        userName: new FormControl('', {validators:[Validators.required, Validators.maxLength(40), Validators.email]}),
+        password: new FormControl('', {validators:[Validators.required]}),
         rememberMe: new FormControl(false)
     })
   }
@@ -38,8 +41,9 @@ export class LoginComponent implements OnInit {
         templateId: 2
       }).subscribe((response)=>{
         if(response){
-          console.log(response);
+          console.log("response", response);
           localStorage.setItem('user', JSON.stringify(response))
+          this.router.navigate([''])
         }
       })
     }

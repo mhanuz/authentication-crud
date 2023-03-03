@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ListComponent } from './list/list.component';
 
 
 
@@ -15,7 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HomeComponent,
     AdminComponent,
     SidebarComponent,
-    PagesComponent
+    PagesComponent,
+    ListComponent
   ],
 
   imports: [

@@ -19,23 +19,34 @@
                                             placeholder="Enter Email Address..."
                                             formControlName="userName"
                                             >
+                                            <span class="help-block" *ngIf="loginForm.controls.userName.invalid && (loginForm.controls.userName.touched || loginForm.controls.userName.dirty)">
+                                                <span class="help-block" *ngIf="loginForm.controls.userName.errors['required']">Please enter your email address!
+                                                </span>
+
+
+                                            </span>
+                                            
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password"
                                             formControlName="password"
                                             >
+                                            <span class="help-block" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched )">
+                                                <span *ngIf="loginForm.controls.password.errors['required']">Please enter your password!</span>
+                                            </span>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck"
+                                            <input type="checkbox" class="custom-control-input" id="customCheck"
                                             formControlName="rememberMe"
+                                            >
+                                            <label class="custom-control-label" for="customCheck"
                                             >Remember
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <button type="submit">Login</button>
+                                    <button type="submit" class="btn btn-primary">Login</button>
                                 </form>
                                 <hr>
                             </div>
