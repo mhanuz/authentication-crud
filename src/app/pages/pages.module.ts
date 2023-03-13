@@ -7,6 +7,8 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListComponent } from './list/list.component';
+import { VatComponent } from './vat/vat.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -17,7 +19,9 @@ import { ListComponent } from './list/list.component';
     AdminComponent,
     SidebarComponent,
     PagesComponent,
-    ListComponent
+    ListComponent,
+    VatComponent,
+    HeaderComponent
   ],
 
   imports: [
