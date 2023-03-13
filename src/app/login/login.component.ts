@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   errorMessage: string;
   submitted: boolean;
+  loading = false;
 
   loginForm: FormGroup<LoginForm>;
   constructor(private authenticationService: AuthenticationService,
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup<LoginForm>({
-        userName: new FormControl(null, {validators:[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]}),
+        userName: new FormControl(null, {validators:[Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$')]}),
         password: new FormControl(null, {validators:[Validators.required]}),
         rememberMe: new FormControl(false)
     })
@@ -36,10 +37,10 @@ export class LoginComponent implements OnInit {
 
   
   onSubmit(){
-    this.submitted = true
-    console.log(this.loginForm);
+    this.submitted = true;
     if(this.loginForm.valid){
       console.log("valid",this.loginForm);
+      this.loading = true;
       const loginData = this.loginForm.value;
       this.authenticationService.login( {
         userName: loginData.userName,
@@ -51,15 +52,21 @@ export class LoginComponent implements OnInit {
         if(response){
           localStorage.setItem('user', JSON.stringify(response))
           this.router.navigate([''])
+          this.loading=false;
           this.toaster.success("Successfully Login")
         }
       }, (error) => {
         if(error instanceof HttpErrorResponse) {
            this.errorMessage = error.error.message;
-           this.toaster.error(this.errorMessage)
+           this.toaster.error(this.errorMessage);
+           this.loading=false;
         }
       })
     }
+  }
+
+  onRemember(){
+
   }
 
 }

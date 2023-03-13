@@ -52,4 +52,7 @@ export class HomeComponent implements OnInit{
     this.authService.userSubject.next(null)
     this.router.navigate(['/login']);
 }
+
+  
+
 }

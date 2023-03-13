@@ -55,22 +55,19 @@
                                             formControlName="rememberMe"
                                             >
                                             <label class="custom-control-label" for="customCheck"
-                                            >Remember
-                                                Me</label>
+                                            (click)="onRemember()"
+                                            >Remember Me</label>
                                         </div>
                                     </div>
                                     
-
-                                    <!-- <span *ngIf="submitted">
-                                        <span class="help-block" style="margin-bottom: 10px;" *ngIf="(loginForm.controls.userName.value == null &&  
-                                        !loginForm.controls.userName.touched) && ( loginForm.controls.password.value == null && !loginForm.controls.password.touched)
-                                        ">You haven't submitted any data.<br></span>
-                                        <span class="help-block" style="margin-bottom: 10px;" *ngIf="(loginForm.controls.userName.value == null &&
-                                        loginForm.controls.password.touched && !loginForm.controls.userName.touched)">Please enter your email address!<br></span>
-                                    </span> -->
-
-                                    <button type="submit" class="btn btn-primary"
-                                    style="margin-top: 15px;">Login</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="loading"
+                                    style="margin-top: 15px;">
+                                    <ng-container *ngIf="loading">
+                                        <app-spinner></app-spinner>
+                                    </ng-container>
+                                       
+                                    Login
+                                </button>
                                 </form>
                                 <hr>
                             </div>
