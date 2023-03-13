@@ -10,7 +10,7 @@ import { PagesComponent } from './pages.component';
 const routes: Routes = [
   {path:'', component:PagesComponent,
     children:[
-      {path:'', component:HomeComponent, canActivate:[AuthGuard]},
+      {path:'', component:HomeComponent},
       {path:'admin', component:AdminComponent},
       {path:'list', component:ListComponent}
     ]

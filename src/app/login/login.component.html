@@ -10,7 +10,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
                                 </div>
                                 <form class="user" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                                     <div class="form-group">
@@ -20,10 +20,17 @@
                                             formControlName="userName"
                                             >
                                             <span class="help-block" *ngIf="loginForm.controls.userName.invalid && (loginForm.controls.userName.touched || loginForm.controls.userName.dirty)">
-                                                <span class="help-block" *ngIf="loginForm.controls.userName.errors['required']">Please enter your email address!
+                                                <span class="help-block" *ngIf="loginForm.controls.userName.errors['required']">Enter your email address!
                                                 </span>
+                                                <span class="help-block" *ngIf="loginForm.controls.userName.errors
+                                                ['pattern']">Please enter a valid email</span>
+                                                
+                                            </span>
 
-
+                                            <span class="help-block" *ngIf="(loginForm.controls.userName.value === null)
+                                            && loginForm.controls.userName.invalid && submitted 
+                                            && loginForm.controls.userName.untouched">
+                                                Email is required !
                                             </span>
                                             
                                     </div>
@@ -33,7 +40,13 @@
                                             formControlName="password"
                                             >
                                             <span class="help-block" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched )">
-                                                <span *ngIf="loginForm.controls.password.errors['required']">Please enter your password!</span>
+                                                <span *ngIf="loginForm.controls.password.errors['required']">Enter your password!</span>
+                                            </span>
+
+                                            <span class="help-block" *ngIf="(loginForm.controls.password.value === null)
+                                            && loginForm.controls.password.invalid && submitted
+                                            && loginForm.controls.password.untouched">
+                                                Password is required !
                                             </span>
                                     </div>
                                     <div class="form-group">
@@ -46,7 +59,18 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    
+
+                                    <!-- <span *ngIf="submitted">
+                                        <span class="help-block" style="margin-bottom: 10px;" *ngIf="(loginForm.controls.userName.value == null &&  
+                                        !loginForm.controls.userName.touched) && ( loginForm.controls.password.value == null && !loginForm.controls.password.touched)
+                                        ">You haven't submitted any data.<br></span>
+                                        <span class="help-block" style="margin-bottom: 10px;" *ngIf="(loginForm.controls.userName.value == null &&
+                                        loginForm.controls.password.touched && !loginForm.controls.userName.touched)">Please enter your email address!<br></span>
+                                    </span> -->
+
+                                    <button type="submit" class="btn btn-primary"
+                                    style="margin-top: 15px;">Login</button>
                                 </form>
                                 <hr>
                             </div>

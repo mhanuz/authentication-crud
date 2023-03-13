@@ -19,7 +19,6 @@ export class AuthenticationService {
       private authLogicService: AuththenticationLogicService
       ) {}
 
-    
 
     login(body: LoginRequest): Observable<LoginRequest>{
       return this.http.post<LoginRequest>(`${environment.apiUrl}/api/account/sign-in`, body)
