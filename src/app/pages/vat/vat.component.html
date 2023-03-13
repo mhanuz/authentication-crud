@@ -39,10 +39,8 @@
                   aria-controls="dataTable"
               /></label>
               <button class="btn btn-primary ml-2">add new item</button>
-
             </div>
           </div>
-
         </div>
         <div class="row">
           <div class="col-sm-12">
@@ -76,59 +74,20 @@
                     aria-controls="dataTable"
                     rowspan="1"
                     colspan="1"
-                    aria-label="Position: activate to sort column ascending"
-                    style="width: 99px"
-                  >
-                    Rate
-                  </th>
-
-                  <th
-                    class="sorting"
-                    tabindex="0"
-                    aria-controls="dataTable"
-                    rowspan="1"
-                    colspan="1"
-                    aria-label="Office: activate to sort column ascending"
-                    style="width: 59px"
-                  >
-                  Quick Book Name
-                  </th>
-
-                  <th
-                    class="sorting"
-                    tabindex="0"
-                    aria-controls="dataTable"
-                    rowspan="1"
-                    colspan="1"
-                    aria-label="Age: activate to sort column ascending"
-                    style="width: 31px"
-                  >
-                  Is Default
-                  </th>
-
-                  <th
-                    class="sorting"
-                    tabindex="0"
-                    aria-controls="dataTable"
-                    rowspan="1"
-                    colspan="1"
                     aria-label="Start date: activate to sort column ascending"
                     style="width: 71px"
                   >
-                  Action
+                    Action
                   </th>
-
                 </tr>
               </thead>
               <tbody>
-                <tr >
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td><button><i class="fas fa-fw fa-cog"></i></button></td>
+                <tr *ngFor="let vat of vats">
+                  <td>{{ vat.categoryName }}</td>
+                  <td>
+                    <button><i class="fas fa-fw fa-cog"></i></button>
+                  </td>
                 </tr>
-                
               </tbody>
             </table>
           </div>

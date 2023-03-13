@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Vats } from '../_models/vats.interface';
+import { VatResult } from '../_models/vats.interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +13,7 @@ export class VatService {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
 
-    return this.http.get<Vats[]>(
+    return this.http.get<VatResult>(
       'http://devapiv3.qsmart.ie/api/hee/measure-category?ItemsPerPage=20&PageNo=1&RStatus=1',
       { headers: header }
     );

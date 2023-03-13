@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs';
-import { Vats } from 'src/app/_models/vats.interface';
+import { VatsData } from 'src/app/_models/vats.interface';
 import { VatService } from 'src/app/_service/vats.service';
 
 @Component({
@@ -9,16 +8,15 @@ import { VatService } from 'src/app/_service/vats.service';
   styleUrls: ['./vat.component.css'],
 })
 export class VatComponent implements OnInit {
-  Vats?: Vats[];
+  vats: VatsData[] = [];
 
-  constructor(private vats: VatService) {}
+  constructor(private vatService: VatService) {}
 
   ngOnInit() {
-    this.vats
-      .getAllItem()
-      .pipe(first())
-      .subscribe((item) => {
-        this.Vats = item;
-      });
+    this.vatService.getAllItem().subscribe((result) => {
+      if (result?.data && result.data.length) {
+        this.vats = result.data;
+      }
+    });
   }
 }
